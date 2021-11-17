@@ -1,0 +1,59 @@
+ 
+<section>
+<form action="">
+
+  <table>
+    <tr>
+      <td>
+        <button type="submit" class="btn btn-default" (click)="addItems()">Add Item</button>
+      </td>
+      <td>
+        <select [(ngModel)]="newItem.name" name="newItemName">
+          <option *ngFor="let o of options" [ngValue]="o">{{o.name}}</option>
+        </select>
+      </td>
+      <td>Qty</td>
+      <td>
+        <input class="form-control" type="number" id="newItemQuantity" pattern="[0-9]*" required [(ngModel)]="newItem.quantity" name="newItemQuantity">
+      </td>
+    </tr>
+  </table>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th>Unit Price</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items; let i = index">
+      <td><span  class="form-control">{{item.name.name}}</span></td> 
+      <td><span >{{item.quantity}}</span></td>
+      <td><span class="form-control" >{{item.name.price}}</span></td>
+      <td>{{item.quantity*item.name.price}}</td>
+      <td><input type="button" value="delete" (click)="removeItem(i)"></td>
+    </tr>
+    <tr>
+      <td>Subtotal</td>
+      <td></td>
+      <td>{{subt}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Taxes 7%</td>
+      <td></td>
+      <td>{{Taxes}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td>{{Ttal}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</section>
